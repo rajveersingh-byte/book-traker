@@ -1,19 +1,36 @@
 import React, { useContext } from 'react'
 import { CartContext } from '../comman/MainContext'
+import { FaHeart } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 export default function Cart() {
-  const subtotal = 43.49
-  const shipping = 4.99
-  const discount = 5.0
+  const { Cart, SetCart } = useContext(CartContext);
+  const getQuantity = (item) => item.quantity ?? item.qty ?? 1;
+  const subtotal = Cart.reduce(
+    (sum, item) => sum + Number(item.price || 0) * getQuantity(item),
+    0
+  );
+  const shipping = Cart.length > 0 ? 4.99 : 0;
+  const discount = Cart.length > 0 ? Math.min(5, subtotal) : 0;
   const total = subtotal + shipping - discount
 
-  const {Cart, SetCart} = useContext(CartContext);
+  const updateQuantity = (id, change) => {
+    const updated = Cart.flatMap((item) => {
+      if (item.id !== id) return [item];
 
-   const removeFromcart = (id) => {
-          const updated = Cart.filter(item => item.id !== id);
-          SetCart(updated);
-          toast.success("Removed from Wishlist");
-      };
+      const quantity = Math.max(1, getQuantity(item) + change);
+      return [{ ...item, quantity }];
+    });
+
+    SetCart(updated);
+  };
+
+  const removeFromcart = (id) => {
+    const updated = Cart.filter(item => item.id !== id);
+    SetCart(updated);
+    toast.success("Removed from Cart");
+  };
 
   return (
 
@@ -36,36 +53,93 @@ export default function Cart() {
             <div className="mt-10 grid gap-8 lg:grid-cols-[1.7fr_0.95fr]">
               <section className="space-y-6">
                 <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-50 shadow-sm">
-                  {Cart.map((item) => (
-                    <div key={item.id} className="flex flex-col gap-4 border-b border-slate-200 p-6 last:border-b-0 sm:flex-row sm:items-center">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="h-36 w-full rounded-[1.5rem] object-cover sm:h-32 sm:w-32"
-                      />
-                      <div className="flex-1 space-y-3">
-                        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                          <div>
-                            <h2 className="text-xl font-semibold text-slate-900">{item.title}</h2>
-                            <p className="text-sm text-slate-500">by {item.author}</p>
+                  {Cart.length === 0 ? (
+                    <div className="bg-white rounded-lg shadow-md p-12 text-center">
+                      <FaHeart className="text-6xl text-gray-300 mx-auto mb-6" />
+
+                      <h2 className="text-2xl font-bold text-gray-600 mb-4">
+                        Your Cart is Empty
+                      </h2>
+
+                      <p className="text-gray-500 mb-8">
+                        Add your Product
+                      </p>
+
+                      <Link
+                        to="/book-listing"
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition"
+                      >
+                        Continue Shopping
+                      </Link>
+                    </div>
+                  ) : (
+                    Cart.map((item) => (
+                      <div
+                        key={item.id}
+                        className="flex flex-col gap-4 border-b border-slate-200 p-6 last:border-b-0 sm:flex-row sm:items-center"
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="h-36 w-full rounded-[1.5rem] object-cover sm:h-32 sm:w-32"
+                        />
+
+                        <div className="flex-1 space-y-3">
+                          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                            <div>
+                              <h2 className="text-xl font-semibold text-slate-900">
+                                {item.title}
+                              </h2>
+
+                              <p className="text-sm text-slate-500">
+                                by {item.author}
+                              </p>
+                            </div>
+
+                            <p className="text-lg font-semibold text-slate-900">
+                              {item.price}
+                            </p>
                           </div>
-                          <p className="text-lg font-semibold text-slate-900">{item.price}</p>
-                        </div>
-                        <p className="text-sm text-slate-600 line-clamp-3">{item.description}</p>
-                        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-600">
-                          <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 shadow-sm">
-                            Qty <strong>{item.quantity}</strong>
-                          </span>
-                          <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 shadow-sm">Format: {item.format}</span>
-                          <button
-                          onClick={() => removeFromcart(item.id)} 
-                          className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100">
-                            Remove
-                          </button>
+
+                          <p className="text-sm text-slate-600 line-clamp-3">
+                            {item.description}
+                          </p>
+
+                          <div className="flex flex-wrap items-center gap-3 text-sm text-slate-600">
+                            <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 shadow-sm">
+                              <button
+                                onClick={() => updateQuantity(item.id, -1)}
+                                disabled={getQuantity(item) <= 1}
+                                className="h-7 w-7 rounded-full border border-slate-200 bg-white text-base font-semibold text-slate-700 transition hover:bg-slate-100"
+                                aria-label={`Decrease quantity of ${item.title || item.name}`}
+                              >
+                                -
+                              </button>
+                              <strong>{getQuantity(item)}</strong>
+                              <button
+                                onClick={() => updateQuantity(item.id, 1)}
+                                className="h-7 w-7 rounded-full border border-slate-200 bg-white text-base font-semibold text-slate-700 transition hover:bg-slate-100"
+                                aria-label={`Increase quantity of ${item.title || item.name}`}
+                              >
+                                +
+                              </button>
+                            </span>
+
+                            <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 shadow-sm">
+                              Format: e-content
+                            </span>
+
+                            <button
+                              onClick={() => removeFromcart(item.id)}
+                              className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+                            >
+                              Remove
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))
+                  )}
                 </div>
               </section>
 
@@ -75,21 +149,21 @@ export default function Cart() {
                   <div className="mt-6 space-y-4 text-sm text-slate-600">
                     <div className="flex justify-between">
                       <span>Subtotal</span>
-                      <span>${subtotal.toFixed(2)}</span>
+                      <span>₹{subtotal.toFixed(2) || 0}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Shipping</span>
-                      <span>${shipping.toFixed(2)}</span>
+                      <span>₹{shipping.toFixed(2) || 0}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Discount</span>
-                      <span className="text-emerald-600">-${discount.toFixed(2)}</span>
+                      <span className="text-emerald-600">-₹{discount.toFixed(2) || 0}</span>
                     </div>
                   </div>
 
                   <div className="mt-6 flex items-center justify-between border-t border-slate-200 pt-4 text-lg font-semibold text-slate-900">
                     <span>Total</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>₹{total.toFixed(2)}</span>
                   </div>
 
                   <button className="mt-6 w-full rounded-[1.75rem] bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700">

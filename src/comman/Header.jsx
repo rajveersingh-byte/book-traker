@@ -35,7 +35,7 @@ export default function Header() {
             >
                 <div className="max-w-screen-xl mx-auto flex items-center justify-between p-4">
                     {/* Logo */}
-                    <a href="/">
+                    <Link to="/">
                         <img
                             src={
                                 isScrolled
@@ -45,14 +45,14 @@ export default function Header() {
                             alt="WsCube Tech"
                             className="w-[120px]"
                         />
-                    </a>
+                    </Link>
 
                     {/* Desktop Menu */}
                     <div className="hidden md:block">
                         <ul className="flex items-center gap-8 font-medium">
                             <li>
-                                <a
-                                    href="/"
+                                <Link
+                                    to="/"
                                     className={`${
                                         isScrolled
                                             ? "text-black hover:text-blue-600"
@@ -60,12 +60,12 @@ export default function Header() {
                                     }`}
                                 >
                                     Home
-                                </a>
+                                </Link>
                             </li>
 
                             <li>
-                                <a
-                                    href="/book-listing"
+                                <Link
+                                    to="/book-listing"
                                     className={`${
                                         isScrolled
                                             ? "text-black hover:text-blue-600"
@@ -73,7 +73,7 @@ export default function Header() {
                                     }`}
                                 >
                                     Books
-                                </a>
+                                </Link>
                             </li>
 
                             <li>
@@ -175,23 +175,23 @@ export default function Header() {
                 <ul className="flex flex-col gap-6 p-6 text-lg font-medium">
 
                     <li>
-                        <a
-                            href="/"
+                        <Link
+                            to="/"
                             onClick={() => setMenuOpen(false)}
                             className="hover:text-blue-600"
                         >
                             Home
-                        </a>
+                        </Link>
                     </li>
 
                     <li>
-                        <a
-                            href="/book-listing"
+                        <Link
+                            to="/book-listing"
                             onClick={() => setMenuOpen(false)}
                             className="hover:text-blue-600"
                         >
                             Books
-                        </a>
+                        </Link>
                     </li>
 
                     <li>

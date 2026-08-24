@@ -109,7 +109,6 @@ export default function Booklisting() {
             rating: book.rating
         };
 
-        // Check if item already exists in wishlist
         const existingItem = Wishlist.find(item => item.id === book.id);
         
         if (existingItem) {
