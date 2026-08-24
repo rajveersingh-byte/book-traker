@@ -309,7 +309,7 @@ export default function Booklisting() {
 
                                                 <div className="mt-6 flex w-full gap-3">
                                                     <Link to={`/book-details/${book.id}`} className="w-1/2">
-                                                        <button className="w-full rounded-xl bg-[#29251f] px-4 py-2 font-semibold text-[#fffaf1] transition hover:bg-[#a47a35]">
+                                                        <button className="w-full rounded-xl bg-[#29251f] px-3 py-2 font-semibold text-[#fffaf1] transition hover:bg-[#a47a35]">
                                                             View Details
                                                         </button>
                                                     </Link>

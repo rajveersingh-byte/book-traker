@@ -88,7 +88,7 @@ export default function Home() {
                         return (
                             <div
                                 key={book.id}
-                                className="group overflow-hidden rounded-3xl border border-[#e2d7c7] bg-[#fffdf8] shadow-[0_12px_35px_rgba(78,59,31,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(78,59,31,0.16)]"
+                                className="group overflow-hidden rounded-3xl border border-[#e2d7c7] bg-[#fffdf8] shadow-[0_12px_35px_rgba(78,59,31,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(78,59,31,0.16)] hover:cursor-pointer"
                             >
 
 

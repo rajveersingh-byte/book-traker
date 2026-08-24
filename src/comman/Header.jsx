@@ -22,114 +22,41 @@ export default function Header() {
         };
     }, []);
 
+    const navLinkClass = ({ isActive }) =>
+        `book-nav-link ${isActive ? "book-nav-link-active" : ""}`;
+
     return (
         <header>
             <ToastContainer />
 
             <nav
-                className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${
-                    isScrolled
-                        ? "bg-white shadow-lg"
-                        : "bg-transparent"
-                }`}
+                className={`book-header ${isScrolled ? "book-header-scrolled" : ""}`}
             >
-                <div className="max-w-screen-xl mx-auto flex items-center justify-between p-4">
-                    {/* Logo */}
-                    <Link to="/">
+                <div className="book-header-inner">
+                    <Link to="/" className="book-brand" aria-label="Book Lab home">
                         <img
-                            src={
-                                isScrolled
-                                    ? "https://www.wscubetech.com/images/wscube-tech-logo-2.svg"
-                                    : "https://www.wscubetech.com/images/ws-cube-white-logo.svg"
-                            }
+                            src={isScrolled
+                                ? "https://deen3evddmddt.cloudfront.net/static/images/wscube-tech-logo-2.svg"
+                                : "https://deen3evddmddt.cloudfront.net/static/images/ws-cube-white-logo.svg"}
                             alt="WsCube Tech"
-                            className="w-[120px]"
                         />
                     </Link>
 
-                    {/* Desktop Menu */}
-                    <div className="hidden md:block">
-                        <ul className="flex items-center gap-8 font-medium">
-                            <li>
-                                <Link
-                                    to="/"
-                                    className={`${
-                                        isScrolled
-                                            ? "text-black hover:text-blue-600"
-                                            : "text-white hover:text-blue-300"
-                                    }`}
-                                >
-                                    Home
-                                </Link>
-                            </li>
-
-                            <li>
-                                <Link
-                                    to="/book-listing"
-                                    className={`${
-                                        isScrolled
-                                            ? "text-black hover:text-blue-600"
-                                            : "text-white hover:text-blue-300"
-                                    }`}
-                                >
-                                    Books
-                                </Link>
-                            </li>
-
-                            <li>
-                                <Link
-                                    to="/contact"
-                                    className={`${
-                                        isScrolled
-                                            ? "text-black hover:text-blue-600"
-                                            : "text-white hover:text-blue-300"
-                                    }`}
-                                >
-                                    Contact
-                                </Link>
-                            </li>
-
-                            <li>
-                                <Link
-                                    to="/wishlist"
-                                    className={`flex items-center gap-2 ${
-                                        isScrolled
-                                            ? "text-black hover:text-blue-600"
-                                            : "text-white hover:text-blue-300"
-                                    }`}
-                                >
-                                    <FaHeart />
-
-                                    <span className="bg-red-500 text-white text-sm px-3 py-1 rounded-full">
-                                        {Wishlist.length}
-                                    </span>
-                                </Link>
-                            </li>
-
-                            <li>
-                                <Link
-                                    to="/cart"
-                                    className={`flex items-center gap-2 ${
-                                        isScrolled
-                                            ? "text-black hover:text-blue-600"
-                                            : "text-white hover:text-blue-300"
-                                    }`}
-                                >
-                                    <FaShoppingCart />
-
-                                    <span className="bg-red-500 text-white text-sm px-3 py-1 rounded-full">
-                                        {Cart.length}
-                                    </span>
-                                </Link>
-                            </li>
-                        </ul>
+                    <div className="book-desktop-menu">
+                        <Link to="/" className={navLinkClass}>Home</Link>
+                        <Link to="/book-listing" className={navLinkClass}>Browse books</Link>
+                        <Link to="/contact" className={navLinkClass}>Contact</Link>
+                        <Link to="/wishlist" className="book-icon-link" aria-label={`Wishlist, ${Wishlist.length} items`}>
+                            <FaHeart /><span>{Wishlist.length}</span>
+                        </Link>
+                        <Link to="/cart" className="book-cart-link">
+                            <FaShoppingCart /> Cart <span>{Cart.length}</span>
+                        </Link>
                     </div>
 
-                    {/* Mobile Button */}
                     <button
-                        className={`md:hidden text-2xl ${
-                            isScrolled ? "text-black" : "text-white"
-                        }`}
+                        className="book-menu-button"
+                        aria-label="Open navigation menu"
                         onClick={() => setMenuOpen(true)}
                     >
                         <FaBars />
@@ -137,108 +64,38 @@ export default function Header() {
                 </div>
             </nav>
 
-            {/* Overlay */}
             <div
                 onClick={() => setMenuOpen(false)}
-                className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 md:hidden ${
-                    menuOpen
-                        ? "opacity-100 visible"
-                        : "opacity-0 invisible"
-                }`}
+                className={`book-menu-overlay ${menuOpen ? "book-menu-overlay-open" : ""}`}
             ></div>
 
-            {/* Offcanvas */}
             <div
-                className={`fixed top-0 left-0 h-screen w-72 bg-white shadow-2xl z-50 transform transition-transform duration-300 md:hidden ${
-                    menuOpen
-                        ? "translate-x-0"
-                        : "-translate-x-full"
-                }`}
+                className={`book-mobile-menu ${menuOpen ? "book-mobile-menu-open" : ""}`}
             >
-                {/* Header */}
-                <div className="flex items-center justify-between p-5 border-b">
-                    <img
-                        src="https://www.wscubetech.com/images/wscube-tech-logo-2.svg"
-                        className="w-32"
-                        alt=""
-                    />
+                <div className="book-mobile-menu-header">
+                    <Link to="/" className="book-brand" onClick={() => setMenuOpen(false)}>
+                        <img
+                            src="https://deen3evddmddt.cloudfront.net/static/images/wscube-tech-logo-2.svg"
+                            alt="WsCube Tech"
+                        />
+                    </Link>
 
                     <button
                         onClick={() => setMenuOpen(false)}
-                        className="text-2xl"
+                        className="book-close-button"
+                        aria-label="Close navigation menu"
                     >
                         <FaTimes />
                     </button>
                 </div>
 
-                {/* Menu */}
-                <ul className="flex flex-col gap-6 p-6 text-lg font-medium">
-
-                    <li>
-                        <Link
-                            to="/"
-                            onClick={() => setMenuOpen(false)}
-                            className="hover:text-blue-600"
-                        >
-                            Home
-                        </Link>
-                    </li>
-
-                    <li>
-                        <Link
-                            to="/book-listing"
-                            onClick={() => setMenuOpen(false)}
-                            className="hover:text-blue-600"
-                        >
-                            Books
-                        </Link>
-                    </li>
-
-                    <li>
-                        <Link
-                            to="/contact"
-                            onClick={() => setMenuOpen(false)}
-                            className="hover:text-blue-600"
-                        >
-                            Contact
-                        </Link>
-                    </li>
-
-                    <li>
-                        <Link
-                            to="/wishlist"
-                            onClick={() => setMenuOpen(false)}
-                            className="flex items-center justify-between hover:text-blue-600"
-                        >
-                            <div className="flex items-center gap-3">
-                                <FaHeart />
-                                Wishlist
-                            </div>
-
-                            <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm">
-                                {Wishlist.length}
-                            </span>
-                        </Link>
-                    </li>
-
-                    <li>
-                        <Link
-                            to="/cart"
-                            onClick={() => setMenuOpen(false)}
-                            className="flex items-center justify-between hover:text-blue-600"
-                        >
-                            <div className="flex items-center gap-3">
-                                <FaShoppingCart />
-                                Cart
-                            </div>
-
-                            <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm">
-                                {Cart.length}
-                            </span>
-                        </Link>
-                    </li>
-
-                </ul>
+                <div className="book-mobile-links">
+                    <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+                    <Link to="/book-listing" onClick={() => setMenuOpen(false)}>Browse books</Link>
+                    <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+                    <Link to="/wishlist" onClick={() => setMenuOpen(false)}><span><FaHeart /> Wishlist</span><b>{Wishlist.length}</b></Link>
+                    <Link to="/cart" onClick={() => setMenuOpen(false)}><span><FaShoppingCart /> Cart</span><b>{Cart.length}</b></Link>
+                </div>
             </div>
         </header>
     );
