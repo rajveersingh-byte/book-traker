@@ -168,7 +168,7 @@ export default function Booklisting() {
 
                     <div className="grid gap-8 lg:grid-cols-4">
                         {/* Sidebar */}
-                        <aside className="h-fit rounded-3xl border border-[#ded2c0] bg-[#fffaf1] p-6 shadow-[0_18px_50px_rgba(78,59,31,0.08)] lg:sticky lg:top-24">
+                        <aside className="h-fit rounded-3xl border border-[#ded2c0] bg-[#fffaf1] p-6 shadow-[0_18px_50px_rgba(78,59,31,0.08)]">
                             <h2 className="mb-6 flex items-center gap-3 text-xl font-semibold">
                                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#29251f] text-[#e5c27a]"><FaFilter /></span> Filters
                             </h2>
@@ -279,7 +279,7 @@ export default function Booklisting() {
                                                 />
                                                 <button 
                                                     onClick={() => handleAddToWishlist(book)}
-                                                    className={`absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full shadow-lg transition ${
+                                                    className={`absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full shadow-lg transition hover:cursor-pointer ${
                                                         isInWishlist(book.id)
                                                             ? "bg-red-500 text-white"
                                                             : "bg-white hover:bg-red-500 hover:text-white"
@@ -309,21 +309,21 @@ export default function Booklisting() {
 
                                                 <div className="mt-6 flex w-full gap-3">
                                                     <Link to={`/book-details/${book.id}`} className="w-1/2">
-                                                        <button className="w-full rounded-xl bg-[#29251f] px-3 py-2 font-semibold text-[#fffaf1] transition hover:bg-[#a47a35]">
+                                                        <button className="w-full rounded-xl bg-[#29251f] px-3 py-2 font-semibold text-[#fffaf1] transition hover:bg-[#a47a35] hover:cursor-pointer">
                                                             View Details
                                                         </button>
                                                     </Link>
                                                     {Cart.some((item) => item.id === book.id) ? (
                                                         <button
                                                             onClick={() => removeFromCart(book.id)}
-                                                            className="rounded-xl bg-[#9d4f42] px-3 py-2 font-semibold text-white text-sm transition hover:bg-[#7f3d34]"
+                                                            className="rounded-xl bg-[#9d4f42] px-3 py-2 font-semibold text-white text-sm transition hover:bg-[#7f3d34] hover:cursor-pointer"
                                                         >
                                                             Remove Cart
                                                         </button>
                                                     ) : (
                                                         <button
                                                             onClick={() => handleBuyNow(book)}
-                                                            className="rounded-xl bg-[#a47a35] px-3 py-2 font-semibold text-white transition hover:bg-[#805d27]"
+                                                            className="rounded-xl bg-[#a47a35] px-3 py-2 font-semibold text-white transition hover:bg-[#805d27] hover:cursor-pointer"
                                                         >
                                                             Add to Cart
                                                         </button>

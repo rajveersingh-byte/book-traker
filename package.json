@@ -18,6 +18,7 @@
     "react-notify": "^3.0.0",
     "react-router-dom": "^7.18.1",
     "react-toastify": "^11.1.0",
+    "sweetalert2": "^11.26.25",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {

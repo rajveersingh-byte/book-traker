@@ -33,9 +33,9 @@ export default function Footer() {
 
                     <div>
                         <h2>Elsewhere</h2>
-                        <Link to="https://www.instagram.com/wscubetechindia/?hl=en" target="_blank" rel="noreferrer"><FaInstagram /> Instagram</Link>
+                        <Link className='flex align-middle' to="https://www.instagram.com/wscubetechindia/?hl=en" target="_blank" rel="noreferrer"><FaInstagram /> Instagram</Link>
 
-                        <Link to="https://x.com/wscubetechindia?lang=en" target="_blank" rel="noreferrer"><FaTwitter /> Twitter</Link>
+                        <Link className='flex align-middle' to="https://x.com/wscubetechindia?lang=en" target="_blank" rel="noreferrer"><FaTwitter /> Twitter</Link>
 
                     </div>
                 </div>

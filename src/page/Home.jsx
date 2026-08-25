@@ -60,8 +60,6 @@ export default function Home() {
         return Wishlist.some(item => item.id === bookId);
     };
 
-
-
     return (
 
         <>
@@ -88,7 +86,7 @@ export default function Home() {
                         return (
                             <div
                                 key={book.id}
-                                className="group overflow-hidden rounded-3xl border border-[#e2d7c7] bg-[#fffdf8] shadow-[0_12px_35px_rgba(78,59,31,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(78,59,31,0.16)] hover:cursor-pointer"
+                                className="group overflow-hidden rounded-3xl border border-[#e2d7c7] bg-[#fffdf8] shadow-[0_12px_35px_rgba(78,59,31,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(78,59,31,0.16)]"
                             >
 
 
@@ -97,7 +95,7 @@ export default function Home() {
 
                                     <button
                                         onClick={() => handleAddToWishlist(book)}
-                                        className={`absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full shadow-lg transition ${isInWishlist(book.id)
+                                        className={`absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full shadow-lg transition hover:cursor-pointer ${isInWishlist(book.id)
                                             ? "bg-red-500 text-white"
                                             : "bg-white hover:bg-red-500 hover:text-white"
                                             }`}
@@ -151,7 +149,7 @@ export default function Home() {
                                             to={`/book-details/${book.id}`}
                                             className="w-1/2"
                                         >
-                                            <button className="w-full rounded-xl bg-[#29251f] px-4 py-2 font-semibold text-[#fffaf1] transition hover:bg-[#a47a35]">
+                                            <button className="w-full rounded-xl bg-[#29251f] px-4 py-2 font-semibold text-[#fffaf1] transition hover:bg-[#a47a35] hover:cursor-pointer">
                                                 View Details
                                             </button>
                                         </Link>
@@ -159,14 +157,14 @@ export default function Home() {
                                         {isInCart ? (
                                             <button
                                                 onClick={() => removeFromcart(book.id)}
-                                                className=" rounded-xl bg-[#9d4f42] px-3 py-2 font-semibold text-sm text-white transition hover:bg-[#7f3d34]"
+                                                className=" rounded-xl bg-[#9d4f42] px-3 py-2 font-semibold text-sm text-white transition hover:bg-[#7f3d34] hover:cursor-pointer"
                                             >
                                                 Remove Cart
                                             </button>
                                         ) : (
                                             <button
                                                 onClick={() => AddtoCart(book)}
-                                                className=" rounded-xl bg-[#a47a35] px-3 py-2 font-semibold text-white transition hover:bg-[#805d27]"
+                                                className=" rounded-xl bg-[#a47a35] px-3 py-2 font-semibold text-white transition hover:bg-[#805d27] hover:cursor-pointer"
                                             >
                                                 Add to Cart
                                             </button>

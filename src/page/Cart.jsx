@@ -3,6 +3,7 @@ import { CartContext } from '../comman/MainContext'
 import { FaHeart } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 export default function Cart() {
   const { Cart, SetCart } = useContext(CartContext);
@@ -26,7 +27,20 @@ export default function Cart() {
     SetCart(updated);
   };
 
-  const removeFromcart = (id) => {
+  const removeFromcart = async (id) => {
+    const result = await Swal.fire({
+      title: 'Remove this book?',
+      text: 'This item will be removed from your cart.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, remove it',
+      cancelButtonText: 'Cencel',
+      confirmButtonColor: '#7f3d34',
+      cancelButtonColor: '#29251f',
+    });
+
+    if (!result.isConfirmed) return;
+
     const updated = Cart.filter(item => item.id !== id);
     SetCart(updated);
     toast.success("Removed from Cart");
@@ -183,9 +197,9 @@ export default function Cart() {
                   <p className="mt-3 leading-6">
                     Reach out to our support team if you have any questions about your order or delivery options.
                   </p>
-                  <a href="/contact" className="mt-4 inline-flex text-sm font-semibold text-slate-900 underline">
+                  <Link to="/contact" className="mt-4 inline-flex text-sm font-semibold text-slate-900 underline">
                     Contact support
-                  </a>
+                  </Link>
                 </div>
               </aside>
             </div>
