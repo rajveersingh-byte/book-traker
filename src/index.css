@@ -54,7 +54,9 @@ select {
   font-family: "Playfair Display", serif;
   font-size: 1.3rem;
 }
-
+.book-list{
+  color: #fffaf1 !important;
+}
 .book-brand strong {
   font-weight: 700;
 }

@@ -156,7 +156,7 @@ export default function Booklisting() {
                         <select
                             value={sortBy}
                             onChange={(e) => setSortBy(e.target.value)}
-                            className="rounded-full border border-[#cbbda8] bg-[#fffaf1] px-5 py-3 text-sm font-semibold text-[#40382e] shadow-sm outline-none transition focus:border-[#a47a35]"
+                            className="rounded-full border border-[#cbbda8] hover:cursor-pointer bg-[#fffaf1] px-5 py-3 text-sm font-semibold text-[#40382e] shadow-sm outline-none transition focus:border-[#a47a35]"
                         >
                             <option value="">Sort By</option>
                             <option value="low">Price Low → High</option>

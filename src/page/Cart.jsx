@@ -87,7 +87,7 @@ export default function Cart() {
 
                       <Link
                         to="/book-listing"
-                        className="rounded-full bg-[#29251f] px-8 py-3 font-semibold text-[#fffaf1] transition hover:bg-[#a47a35]"
+                        className="rounded-full bg-[#29251f] px-8 py-3 font-semibold book-list text-[#fffaf1] transition hover:bg-[#a47a35]"
                       >
                         Continue Shopping
                       </Link>
@@ -187,7 +187,7 @@ export default function Cart() {
                     <span>₹{total.toFixed(2)}</span>
                   </div>
 
-                  <button className="mt-6 w-full rounded-full bg-[#d8b36a] px-5 py-3 text-sm font-semibold text-[#29251f] transition hover:bg-[#f0d08d]">
+                  <button className="mt-6 w-full rounded-full bg-[#d8b36a] px-5 py-3 text-sm font-semibold text-[#29251f] transition hover:bg-[#f0d08d] hover:cursor-pointer">
                     Checkout now
                   </button>
                 </div>
@@ -197,7 +197,7 @@ export default function Cart() {
                   <p className="mt-3 leading-6">
                     Reach out to our support team if you have any questions about your order or delivery options.
                   </p>
-                  <Link to="/contact" className="mt-4 inline-flex text-sm font-semibold text-slate-900 underline">
+                  <Link to="/contact" className="mt-4 inline-flex hover:cursor-pointer text-sm font-semibold text-slate-900 underline">
                     Contact support
                   </Link>
                 </div>
