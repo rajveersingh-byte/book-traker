@@ -54,11 +54,7 @@ select {
   font-family: "Playfair Display", serif;
   font-size: 1.3rem;
 }
-.book-brand img {
-  display: block;
-  width: 132px;
-  height: auto;
-}
+
 .book-brand strong {
   font-weight: 700;
 }

@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="book-footer-inner">
                 <div className="book-footer-brand">
                     <Link to="/" className="book-brand">
-                    <img src="https://deen3evddmddt.cloudfront.net/static/images/ws-cube-white-logo.svg" alt="WsCube tech" />
+                    <img className='max-w-[150px]' src="https://deen3evddmddt.cloudfront.net/static/images/ws-cube-white-logo.svg" alt="WsCube tech" />
                     </Link>
                     <p>Good books, thoughtfully gathered.</p>
                 </div>

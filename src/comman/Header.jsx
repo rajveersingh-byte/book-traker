@@ -34,7 +34,7 @@ export default function Header() {
             >
                 <div className="book-header-inner">
                     <Link to="/" className="book-brand" aria-label="Book Lab home">
-                        <img
+                        <img className="max-w-[150px]"
                             src={isScrolled
                                 ? "https://deen3evddmddt.cloudfront.net/static/images/wscube-tech-logo-2.svg"
                                 : "https://deen3evddmddt.cloudfront.net/static/images/ws-cube-white-logo.svg"}
