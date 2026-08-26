@@ -232,7 +232,7 @@ export default function Booklisting() {
                                         key={item}
                                         onClick={() => setRating(item)}
                                         className={`block w-full text-left px-3 py-2 rounded mb-2 ${
-                                            rating === item ? "bg-blue-600 text-white" : "hover:bg-gray-100"
+                                            rating === item ? "bg-[#a47a35] text-white" : "hover:bg-gray-100"
                                         }`}
                                     >
                                         {item === 0 ? "All Ratings" : `${item}+ Stars`}

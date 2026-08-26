@@ -145,10 +145,10 @@ export default function BookDetails() {
                 </div>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <button onClick={AddtoCart} className="inline-flex min-w-[160px] items-center justify-center rounded-full bg-[#d8b36a] px-5 py-3 text-sm font-semibold text-[#29251f] transition hover:bg-[#f0d08d]">
+                  <button onClick={AddtoCart} className="inline-flex min-w-[160px] items-center justify-center rounded-full bg-[#d8b36a] px-5 py-3 text-sm font-semibold text-[#29251f] transition hover:corsor-pointer hover:bg-[#f0d08d]">
                     Add to Cart
                   </button>
-                  <button className="inline-flex min-w-[160px] items-center justify-center rounded-full border border-[#d8b36a] bg-transparent px-5 py-3 text-sm font-semibold text-[#fffaf1] transition hover:bg-[#3a342c]">
+                  <button className="inline-flex min-w-[160px] items-center justify-center rounded-full border border-[#d8b36a] bg-transparent px-5 py-3 text-sm font-semibold text-[#fffaf1] hover:corsor-pointer transition hover:bg-[#3a342c]">
                     Buy Now
                   </button>
                 </div>

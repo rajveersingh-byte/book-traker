@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="book-footer-inner">
                 <div className="book-footer-brand">
                     <Link to="/" className="book-brand">
-                    <img className='max-w-[150px]' src="https://deen3evddmddt.cloudfront.net/static/images/ws-cube-white-logo.svg" alt="WsCube tech" />
+                    <img className='max-w-[200px]' src="https://deen3evddmddt.cloudfront.net/static/images/ws-cube-white-logo.svg" alt="WsCube tech" />
                     </Link>
                     <p>Good books, thoughtfully gathered.</p>
                 </div>
@@ -40,7 +40,7 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="book-footer-bottom"><span>© 2026 WsCube Tech Made for readers.</span>
+            <div className="book-footer-bottom"><span>© {new Date().getFullYear()} WsCube Tech Made for readers.</span>
             <button className='border border-[#e2d7c7] p-2 rounded-full hover:cursor-pointer' type="button" onClick={scrollToTop} aria-label="Scroll to top"><FaArrowUp /></button></div>
         </footer>
 

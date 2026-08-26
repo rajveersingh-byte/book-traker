@@ -32,9 +32,9 @@ export default function Header() {
             <nav
                 className={`book-header ${isScrolled ? "book-header-scrolled" : ""}`}
             >
-                <div className="book-header-inner">
+                <div className="book-header-inner py-4">
                     <Link to="/" className="book-brand" aria-label="Book Lab home">
-                        <img className="max-w-[150px]"
+                        <img className="max-w-[200px]"
                             src={isScrolled
                                 ? "https://deen3evddmddt.cloudfront.net/static/images/wscube-tech-logo-2.svg"
                                 : "https://deen3evddmddt.cloudfront.net/static/images/ws-cube-white-logo.svg"}
@@ -50,7 +50,7 @@ export default function Header() {
                             <FaHeart /><span>{Wishlist.length}</span>
                         </Link>
                         <Link to="/cart" className="book-cart-link">
-                            <FaShoppingCart /> Cart <span>{Cart.length}</span>
+                            <FaShoppingCart /> Cart <span>({Cart.length})</span>
                         </Link>
                     </div>
 
