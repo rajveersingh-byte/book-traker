@@ -32,7 +32,7 @@ export default function Header() {
             <nav
                 className={`book-header ${isScrolled ? "book-header-scrolled" : ""}`}
             >
-                <div className="book-header-inner py-4">
+                <div className="book-header-inner py-2">
                     <Link to="/" className="book-brand" aria-label="Book Lab home">
                         <img className="max-w-[200px]"
                             src={isScrolled
@@ -49,8 +49,8 @@ export default function Header() {
                         <Link to="/wishlist" className="book-icon-link" aria-label={`Wishlist, ${Wishlist.length} items`}>
                             <FaHeart /><span>{Wishlist.length}</span>
                         </Link>
-                        <Link to="/cart" className="book-cart-link">
-                            <FaShoppingCart /> Cart <span>({Cart.length})</span>
+                        <Link to="/cart" className="book-icon-link" aria-label={`Cart, ${Cart.length} items`}>
+                            <FaShoppingCart /><span>{Cart.length}</span>
                         </Link>
                     </div>
 

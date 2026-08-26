@@ -41,12 +41,12 @@ select {
 }
 .book-header-inner {
   width: min(1240px, calc(100% - 40px));
-  height: 78px;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .book-brand {
   display: inline-flex;
   align-items: center;
@@ -54,6 +54,8 @@ select {
   font-family: "Playfair Display", serif;
   font-size: 1.3rem;
 }
+
+
 .book-list{
   color: #fffaf1 !important;
 }
@@ -141,9 +143,9 @@ select {
   background: #29251f;
 }
 .book-footer-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 60px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 48px;
   padding-bottom: 60px;
 }
 .book-footer-brand .book-brand {
@@ -157,9 +159,7 @@ select {
   line-height: 1.6;
 }
 .book-footer-links {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(120px, 1fr));
-  gap: 70px;
+  display: contents;
 }
 .book-footer-links div {
   display: flex;

@@ -23,10 +23,10 @@ export default function Wishlist() {
             price: item.price,
             qty: 1
         };
-        
+
         // Check if item already exists in cart
         const existingItem = Cart.find(cartItem => cartItem.id === item.id);
-        
+
         if (existingItem) {
             toast.info("Item already in cart");
         } else {
@@ -72,10 +72,10 @@ export default function Wishlist() {
                         </div>
 
                         {Wishlist.length > 0 && (
-                            <button onClick={moveAllToCart} className="inline-flex items-center gap-3 rounded-full bg-[#e8bd6c] px-5 py-3 text-sm font-bold text-[#29251f] transition hover:-translate-y-0.5 hover:bg-[#f0cc83]">
+                            <button onClick={moveAllToCart} className="inline-flex items-center gap-3 rounded-full bg-[#e8bd6c] px-5 py-3 text-sm font-bold text-[#29251f] transition hover:-translate-y-0.5 hover:bg-[#f0cc83] hover:cursor-pointer">
                                 <FaShoppingCart /> Move all to cart <FaArrowRight className="text-xs" />
                             </button>
-                        )}
+                        )} 
                     </div>
 
                     {Wishlist.length === 0 ? (
@@ -89,41 +89,41 @@ export default function Wishlist() {
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
-                                {Wishlist.map((item) => (
-                                    <article key={item.id} className="group overflow-hidden rounded-2xl border border-[#e2d7c7] bg-[#fffdf8] shadow-[0_12px_35px_rgba(78,59,31,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_45px_rgba(78,59,31,0.14)]">
-                                        <Link to={`/book-details/${item.id}`}>
-                                            <div className="relative h-72 overflow-hidden bg-[#e8ded0]"><img src={item.image} alt={item.name} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" /><span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-[#29251f]/90 px-3 py-2 text-xs font-bold text-[#fffaf1]"><FaHeart /> Saved</span></div>
+                            {Wishlist.map((item) => (
+                                <article key={item.id} className="group overflow-hidden rounded-2xl border border-[#e2d7c7] bg-[#fffdf8] shadow-[0_12px_35px_rgba(78,59,31,0.07)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_22px_45px_rgba(78,59,31,0.14)]">
+                                    <Link to={`/book-details/${item.id}`}>
+                                        <div className="relative h-72 overflow-hidden bg-[#e8ded0]"><img src={item.image} alt={item.name} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" /><span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-[#29251f]/90 px-3 py-2 text-xs font-bold text-[#fffaf1]"><FaHeart /> Saved</span></div>
+                                    </Link>
+
+                                    <div className="p-5">
+                                        <Link to={`/book-details/${item.id}`} className="transition hover:text-[#a47a35]"><h3 className="min-h-14 font-serif text-2xl font-semibold leading-tight">{item.name}</h3>
                                         </Link>
-
-                                        <div className="p-5">
-                                            <Link to={`/book-details/${item.id}`} className="transition hover:text-[#a47a35]"><h3 className="min-h-14 font-serif text-2xl font-semibold leading-tight">{item.name}</h3>
-                                            </Link>
-                                            <p className="mb-5 mt-2 text-sm text-[#877d70]">By {item.author}</p>
-                                            <div className="flex items-center justify-between border-y border-[#e6dccd] py-4">
-                                                <strong className="text-xl text-[#9a702f]">₹{item.price}</strong>
-                                                <span className="rounded-full bg-[#f5ead3] px-3 py-1.5 text-xs font-bold text-[#8b6429]">★ {item.rating || 'N/A'}</span>
-                                            </div>
-
-                                            <div className="mt-5 flex gap-3">
-                                                <button
-                                                    onClick={() => addToCart(item)}
-                                                    className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border-0 bg-[#29251f] px-3 text-sm font-bold text-[#fffaf1] transition hover:bg-[#a47a35]"
-                                                >
-                                                    <FaShoppingCart />
-                                                    Add to Cart
-                                                </button>
-
-                                                <button
-                                                    onClick={() => removeFromWishlist(item.id)}
-                                                    aria-label={`Remove ${item.name} from wishlist`}
-                                                    className="flex h-11 w-11 items-center justify-center rounded-xl border-0 bg-[#f5e4df] text-[#9d4f42] transition hover:bg-[#9d4f42] hover:text-white"
-                                                >
-                                                    <FaTrash />
-                                                </button>
-                                            </div>
+                                        <p className="mb-5 mt-2 text-sm text-[#877d70]">By {item.author}</p>
+                                        <div className="flex items-center justify-between border-y border-[#e6dccd] py-4">
+                                            <strong className="text-xl text-[#9a702f]">₹{item.price}</strong>
+                                            <span className="rounded-full bg-[#f5ead3] px-3 py-1.5 text-xs font-bold text-[#8b6429]">★ {item.rating || 'N/A'}</span>
                                         </div>
-                                    </article>
-                                ))}
+
+                                        <div className="mt-5 flex gap-3">
+                                            <button
+                                                onClick={() => addToCart(item)}
+                                                className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border-0 bg-[#29251f] px-3 text-sm font-bold text-[#fffaf1] transition hover:bg-[#a47a35] hover:cursor-pointer"
+                                            >
+                                                <FaShoppingCart />
+                                                Add to Cart
+                                            </button>
+
+                                            <button
+                                                onClick={() => removeFromWishlist(item.id)}
+                                                aria-label={`Remove ${item.name} from wishlist`}
+                                                className="flex h-11 w-11 items-center justify-center rounded-xl border-0 bg-[#f5e4df] text-[#9d4f42] transition hover:bg-[#9d4f42] hover:text-white hover:cursor-pointer"
+                                            >
+                                                <FaTrash />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+                            ))}
                         </div>
                     )}
                 </div>

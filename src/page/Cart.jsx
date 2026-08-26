@@ -130,7 +130,7 @@ export default function Cart() {
                               <button
                                 onClick={() => updateQuantity(item.id, -1)}
                                 disabled={getQuantity(item) <= 1}
-                                className="h-7 w-7 rounded-full border border-[#d9cdbb] bg-white text-base font-semibold text-[#51483d] transition hover:bg-[#efe2c5] disabled:cursor-not-allowed disabled:opacity-40"
+                                className="h-7 w-7 rounded-full border border-[#d9cdbb] bg-white text-base font-semibold text-[#51483d] transition hover:bg-[#efe2c5] disabled:cursor-not-allowed disabled:opacity-40 hover:cursor-pointer"
                                 aria-label={`Decrease quantity of ${item.title || item.name}`}
                               >
                                 -
@@ -138,7 +138,7 @@ export default function Cart() {
                               <strong>{getQuantity(item)}</strong>
                               <button
                                 onClick={() => updateQuantity(item.id, 1)}
-                                className="h-7 w-7 rounded-full border border-[#d9cdbb] bg-white text-base font-semibold text-[#51483d] transition hover:bg-[#efe2c5]"
+                                className="h-7 w-7 rounded-full border border-[#d9cdbb] bg-white text-base font-semibold text-[#51483d] transition hover:bg-[#efe2c5] hover:cursor-pointer"
                                 aria-label={`Increase quantity of ${item.title || item.name}`}
                               >
                                 +
@@ -151,7 +151,7 @@ export default function Cart() {
 
                             <button
                               onClick={() => removeFromcart(item.id)}
-                              className="rounded-full border border-[#d9cdbb] bg-transparent px-4 py-2 text-sm font-semibold text-[#7f3d34] transition hover:bg-[#f3dfda]"
+                              className="rounded-full border border-[#d9cdbb] bg-transparent px-4 py-2 text-sm font-semibold text-[#7f3d34] transition hover:bg-[#f3dfda] hover:cursor-pointer"
                             >
                               Remove
                             </button>

@@ -22,7 +22,7 @@ export default function Home() {
         };
 
         SetCart([...Cart, itemToCart]);
-        toast('Items Added in Cart ')
+        toast.success('Items Added in Cart ')
     }
 
     const removeFromcart = (id) => {
@@ -48,7 +48,7 @@ export default function Home() {
             // Remove from wishlist
             const updatedWishlist = Wishlist.filter(item => item.id !== book.id);
             SetWishlist(updatedWishlist);
-            toast.info("Removed from Wishlist");
+            toast.success("Removed from Wishlist");
         } else {
             // Add to wishlist
             SetWishlist([...Wishlist, itemToWishlist]);

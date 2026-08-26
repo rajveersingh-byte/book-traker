@@ -120,7 +120,7 @@ export default function Booklisting() {
             // Remove from wishlist
             const updatedWishlist = Wishlist.filter(item => item.id !== book.id);
             SetWishlist(updatedWishlist);
-            toast.info("Removed from Wishlist");
+            toast.success("Removed from Wishlist");
         } else {
             // Add to wishlist
             SetWishlist([...Wishlist, itemToWishlist]);
