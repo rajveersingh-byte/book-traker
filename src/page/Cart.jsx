@@ -34,7 +34,7 @@ export default function Cart() {
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, remove it',
-      cancelButtonText: 'Cencel',
+      cancelButtonText: 'Cancel',
       confirmButtonColor: '#7f3d34',
       cancelButtonColor: '#29251f',
     });
